@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+ name: nginx-html
+data:
+ index.html: |
+   <!DOCTYPE html>
+   <html>
+   <head>
+       <title>GitOps Demo</title>
+   </head>
+   <body>
+       <h1>GitOps Deployment Successful</h1>
+       <p>Served from ConfigMap</p>
+       <p>Version 1</p>
+   </body>
+   </html>
