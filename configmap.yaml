@@ -10,7 +10,7 @@ data:
        <title>GitOps Demo</title>
    </head>
    <body>
-       <h1>GitOps Deployment Successful</h1>
+       <h1>GitOps Update  Successful using argocd</h1>
        <p>Served from ConfigMap</p>
        <p>Version 2</p>
    </body>
