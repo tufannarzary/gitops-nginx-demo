@@ -1,20 +1,22 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
- name: nginx-demo
+ name: nginx-bluegreen
 spec:
  replicas: 2
+
  selector:
    matchLabels:
-     app: nginx-demo
+     app: nginx-bluegreen
+
  template:
    metadata:
      labels:
-       app: nginx-demo
+       app: nginx-bluegreen
    spec:
      containers:
      - name: nginx
-       image: nginx:latest
+       image: nginx:1.25
        ports:
        - containerPort: 80
        volumeMounts:
@@ -23,4 +25,10 @@ spec:
      volumes:
      - name: html-volume
        configMap:
-         name: nginx-html
+         name: nginx-blue-html
+
+ strategy:
+   blueGreen:
+     activeService: nginx-active
+     previewService: nginx-preview
+     autoPromotionEnabled: false
